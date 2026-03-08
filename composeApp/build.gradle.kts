@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -102,5 +104,14 @@ compose.desktop {
             packageName = "com.driff.template"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+dependencies {
+    with(libs.kotlinInjectKsp) {
+        add("kspAndroid", this)
+        add("kspJvm", this)
+        add("kspIosArm64", this)
+        add("kspIosSimulatorArm64", this)
     }
 }
